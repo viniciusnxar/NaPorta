@@ -31,19 +31,19 @@ export default function RegisterPage() {
   return (
     <section className="mt-8">
       <h1 className="text-center text-primary text-4xl mb-4">
-        Register
+        Registrar
       </h1>
       {userCreated && (
         <div className="my-4 text-center">
-          User created.<br />
-          Now you can{' '}
+          Usuario Criado.<br />
+          Agora você pode{' '}
           <Link className="underline" href={'/login'}>Login &raquo;</Link>
         </div>
       )}
       {error && (
         <div className="my-4 text-center">
-          An error has occurred.<br />
-          Please try again later
+          Ocorreu um erro.<br />
+          Tente denovo mais tarde
         </div>
       )}
       <form className="block max-w-xs mx-auto" onSubmit={handleFormSubmit}>
@@ -54,20 +54,20 @@ export default function RegisterPage() {
                disabled={creatingUser}
                 onChange={ev => setPassword(ev.target.value)}/>
         <button type="submit" disabled={creatingUser}>
-          Register
+          Registrar
         </button>
         <div className="my-4 text-center text-gray-500">
-          or login with provider
+          ou Tente de outra forma
         </div>
         <button
           onClick={() => signIn('google', {callbackUrl:'/'})}
           className="flex gap-4 justify-center">
           <Image src={'/google.png'} alt={''} width={24} height={24} />
-          Login with google
+          Login c google
         </button>
         <div className="text-center my-4 text-gray-500 border-t pt-4">
-          Existing account?{' '}
-          <Link className="underline" href={'/login'}>Login here &raquo;</Link>
+          Conta Existente?{' '}
+          <Link className="underline" href={'/login'}>Logue aqui &raquo;</Link>
         </div>
       </form>
     </section>

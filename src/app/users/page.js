@@ -18,11 +18,11 @@ export default function UsersPage() {
   }, []);
 
   if (loading) {
-    return 'Loading user info...';
+    return 'Carregando informações de usuário...';
   }
 
   if (!data.admin) {
-    return 'Not an admin';
+    return 'Não é admin';
   }
 
   return (
@@ -36,13 +36,13 @@ export default function UsersPage() {
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4 grow">
               <div className="text-gray-900">
                 {!!user.name && (<span>{user.name}</span>)}
-                {!user.name && (<span className="italic">No name</span>)}
+                {!user.name && (<span className="italic">Sem nome</span>)}
               </div>
               <span className="text-gray-500">{user.email}</span>
             </div>
             <div>
               <Link className="button" href={'/users/'+user._id}>
-                Edit
+                Editar
               </Link>
             </div>
           </div>
