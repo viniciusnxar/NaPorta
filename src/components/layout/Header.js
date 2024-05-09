@@ -30,7 +30,7 @@ function AuthLinks({ status, userName }) {
           href={'/register'}
           className='bg-primary rounded-full text-white px-8 py-2'
         >
-          Register
+          Registrar
         </Link>
       </>
     );

@@ -40,12 +40,12 @@ export default function OrderPage() {
       <div className="text-center">
         <SectionHeaders mainHeader="Your order" />
         <div className="mt-4 mb-8">
-          <p>Thanks for your order.</p>
-          <p>We will call you when your order will be on the way.</p>
+          <p>Obrigado pelo pedido!</p>
+          <p>entraremos em contato quando o pedido sair a entrega.</p>
         </div>
       </div>
       {loadingOrder && (
-        <div>Loading order...</div>
+        <div>Carregando pedido...</div>
       )}
       {order && (
         <div className="grid md:grid-cols-2 md:gap-16">
@@ -55,14 +55,14 @@ export default function OrderPage() {
             ))}
             <div className="text-right py-2 text-gray-500">
               Subtotal:
-              <span className="text-black font-bold inline-block w-8">${subtotal}</span>
+              <span className="text-black font-bold inline-block w-8">R${subtotal}</span>
               <br />
-              Delivery:
-              <span className="text-black font-bold inline-block w-8">$5</span>
+              Frete:
+              <span className="text-black font-bold inline-block w-8">R$5</span>
               <br />
               Total:
               <span className="text-black font-bold inline-block w-8">
-                ${subtotal + 5}
+                R${subtotal + 5}
               </span>
             </div>
           </div>

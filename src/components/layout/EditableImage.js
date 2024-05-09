@@ -22,9 +22,9 @@ export default function EditableImage({link, setLink}) {
       });
 
       await toast.promise(uploadPromise, {
-        loading: 'Uploading...',
-        success: 'Upload complete',
-        error: 'Upload error',
+        loading: 'Enviando...',
+        success: 'Upload completo',
+        error: 'Erro no upload',
       });
     }
   }
@@ -36,12 +36,12 @@ export default function EditableImage({link, setLink}) {
       )}
       {!link && (
         <div className="text-center bg-gray-200 p-4 text-gray-500 rounded-lg mb-1">
-          No image
+          Sem Imagem
         </div>
       )}
       <label>
         <input type="file" className="hidden" onChange={handleFileChange} />
-        <span className="block border border-gray-300 rounded-lg p-2 text-center cursor-pointer">Change image</span>
+        <span className="block border border-gray-300 rounded-lg p-2 text-center cursor-pointer">Mudar Imagem</span>
       </label>
     </>
   );

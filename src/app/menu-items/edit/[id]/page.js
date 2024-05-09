@@ -43,9 +43,9 @@ export default function EditMenuItemPage() {
     });
 
     await toast.promise(savingPromise, {
-      loading: 'Saving this tasty item',
-      success: 'Saved',
-      error: 'Error',
+      loading: 'Salvando item',
+      success: 'Salvo!',
+      error: 'Erro',
     });
 
     setRedirectToItems(true);
@@ -63,9 +63,9 @@ export default function EditMenuItemPage() {
     });
 
     await toast.promise(promise, {
-      loading: 'Deleting...',
-      success: 'Deleted',
-      error: 'Error',
+      loading: 'Deletando...',
+      success: 'Deletado.',
+      error: 'Erro',
     });
 
     setRedirectToItems(true);
@@ -76,11 +76,11 @@ export default function EditMenuItemPage() {
   }
 
   if (loading) {
-    return 'Loading user info...';
+    return 'Carregando informações do usuário...';
   }
 
   if (!data.admin) {
-    return 'Not an admin.';
+    return 'Não.';
   }
 
   return (
@@ -89,14 +89,14 @@ export default function EditMenuItemPage() {
       <div className="max-w-2xl mx-auto mt-8">
         <Link href={'/menu-items'} className="button">
           <Left />
-          <span>Show all menu items</span>
+          <span>Mostrar todos os itens do meu</span>
         </Link>
       </div>
       <MenuItemForm menuItem={menuItem} onSubmit={handleFormSubmit} />
       <div className="max-w-md mx-auto mt-2">
         <div className="max-w-xs ml-auto pl-4">
           <DeleteButton
-            label="Delete this menu item"
+            label="Deletar esse item"
             onDelete={handleDeleteClick}
           />
         </div>
