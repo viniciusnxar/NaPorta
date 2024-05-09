@@ -11,7 +11,7 @@ function AuthLinks({ status, userName }) {
     return (
       <>
         <Link href={'/profile'} className='whitespace-nowrap'>
-          Hello, {userName}
+          Olá, {userName}
         </Link>
         <button
           onClick={() => signOut()}
