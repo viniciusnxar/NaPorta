@@ -36,7 +36,6 @@ export const authOptions = {
         if (passwordOk) {
           return user;
         }
-
         return null;
       },
     }),
@@ -47,9 +46,8 @@ export const authOptions = {
   }
 };
 
-export async function isAdmin() {
+export async function ChecarAdmin() {
   const session = await getServerSession(authOptions);
-
   const userEmail = session?.user?.email;
   if (!userEmail) {
     return false;

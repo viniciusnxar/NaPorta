@@ -5,12 +5,12 @@ export default function AddressInputs({addressProps,setAddressProp,disabled=fals
       <label>Telefone</label>
       <input
         disabled={disabled}
-        type="tel" placeholder="Phone number"
+        type="tel" placeholder="Telefone"
         value={phone || ''} onChange={ev => setAddressProp('phone', ev.target.value)} />
       <label>Endereço</label>
       <input
         disabled={disabled}
-        type="text" placeholder="Street address"
+        type="text" placeholder="Endereço"
         value={streetAddress || ''} onChange={ev => setAddressProp('streetAddress', ev.target.value)}
       />
       <div className="grid grid-cols-2 gap-2">
@@ -18,7 +18,7 @@ export default function AddressInputs({addressProps,setAddressProp,disabled=fals
           <label>CEP</label>
           <input
             disabled={disabled}
-            type="text" placeholder="Postal code"
+            type="text" placeholder="CEP"
             value={postalCode || ''} onChange={ev => setAddressProp('postalCode', ev.target.value)}
           />
         </div>
@@ -26,7 +26,7 @@ export default function AddressInputs({addressProps,setAddressProp,disabled=fals
           <label>Cidade</label>
           <input
             disabled={disabled}
-            type="text" placeholder="City"
+            type="text" placeholder="Cidade"
             value={city || ''} onChange={ev => setAddressProp('city', ev.target.value)}
           />
         </div>
@@ -34,7 +34,7 @@ export default function AddressInputs({addressProps,setAddressProp,disabled=fals
       <label>Pais</label>
       <input
         disabled={disabled}
-        type="text" placeholder="Country"
+        type="text" placeholder="Pais"
         value={country || ''} onChange={ev => setAddressProp('country', ev.target.value)}
       />
     </>

@@ -1,18 +1,15 @@
 'use client';
-import Link from "next/link";
-import {usePathname} from "next/navigation";
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
-export default function UserTabs({isAdmin}) {
+export default function UserTabs({ ChecarAdmin }) {
   const path = usePathname();
   return (
-    <div className="flex mx-auto gap-2 tabs justify-center flex-wrap">
-      <Link
-        className={path === '/profile' ? 'active' : ''}
-        href={'/profile'}
-      >
+    <div className='flex mx-auto gap-2 tabs justify-center flex-wrap'>
+      <Link className={path === '/profile' ? 'active' : ''} href={'/profile'}>
         Perfil
       </Link>
-      {isAdmin && (
+      {ChecarAdmin && (
         <>
           <Link
             href={'/categories'}
@@ -30,14 +27,11 @@ export default function UserTabs({isAdmin}) {
             className={path.includes('/users') ? 'active' : ''}
             href={'/users'}
           >
-            Usuários 
+            Usuários
           </Link>
         </>
       )}
-      <Link
-        className={path === '/orders' ? 'active' : ''}
-        href={'/orders'}
-      >
+      <Link className={path === '/orders' ? 'active' : ''} href={'/orders'}>
         Pedidos
       </Link>
     </div>

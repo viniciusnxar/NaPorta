@@ -6,16 +6,17 @@ import { signOut, useSession } from 'next-auth/react';
 import Link from 'next/link';
 import { useContext, useState } from 'react';
 
+
 function AuthLinks({ status, userName }) {
   if (status === 'authenticated') {
     return (
       <>
-        <Link href={'/profile'} className='whitespace-nowrap'>
-          Olá, {userName}
+        <Link href={'/profile'} className='whitespace-nowrap text-primary'>
+          {userName}
         </Link>
         <button
           onClick={() => signOut()}
-          className='bg-primary rounded-full text-white px-8 py-2'
+          className='bg-primary text-white px-7 py-2'
         >
           Logout
         </button>
@@ -28,8 +29,7 @@ function AuthLinks({ status, userName }) {
         <Link href={'/login'}>Login</Link>
         <Link
           href={'/register'}
-          className='bg-primary rounded-full text-white px-8 py-2'
-        >
+          className='bg-primary rounded-full text-white px-8 py-2'>
           Registrar
         </Link>
       </>
@@ -48,9 +48,9 @@ export default function Header() {
     userName = userName.split(' ')[0];
   }
   return (
-    <header>
-      <div className='flex items-center md:hidden justify-between'>
-        <Link className='text-primary font-semibold text-2xl' href={'/'}>
+    <header className='bg-[#F7F7F7]'>
+      {/* <div className='flex items-center md:hidden justify-between '>
+        <Link className='text-gray-200 font-semibold text-2xl' href={'/'}>
           NaPorta
         </Link>
         <div className='flex gap-8 items-center'>
@@ -81,9 +81,9 @@ export default function Header() {
           <Link href={'/#contact'}>Contato</Link>
           <AuthLinks status={status} userName={userName} />
         </div>
-      )}
-      <div className='hidden md:flex items-center justify-between'>
-        <nav className='flex items-center gap-8 text-gray-500 font-semibold'>
+      )} */}
+      <div className='hidden md:flex items-center justify-between p-11'>
+        <nav className='flex items-center gap-8 text-gray-500 font-semibold max-w-1xl mx-auto'>
           <Link className='text-primary font-semibold text-2xl' href={'/'}>
             NaPorta
           </Link>
