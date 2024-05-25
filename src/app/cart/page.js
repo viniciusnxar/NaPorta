@@ -75,7 +75,7 @@ export default function CartPage() {
   if (cartProducts?.length === 0) {
     return (
       <section className='mt-8 text-center'>
-        <SectionHeaders mainHeader='Cart' />
+        <SectionHeaders mainHeader='Carrinho' />
         <p className='mt-4'>Seu carrinho esta vazio 😔</p>
       </section>
     );
@@ -84,7 +84,7 @@ export default function CartPage() {
   return (
     <section className='mt-8'>
       <div className='text-center'>
-        <SectionHeaders mainHeader='Cart' />
+        <SectionHeaders mainHeader='Carrinho' />
       </div>
       <div className='mt-8 grid gap-8 grid-cols-2'>
         <div>

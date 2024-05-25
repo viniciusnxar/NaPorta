@@ -9,7 +9,9 @@ export default function Home() {
       <Hero />
       <HomeMenu />
       <section className='text-center my-16' id='about'>
-        <SectionHeaders subHeader={'Nossa historia'} mainHeader={'Sobre'} />
+        <SectionHeaders 
+        // subHeader={'Nossa historia'} 
+        mainHeader={'Sobre'} />
         <div className='text-gray-500 max-w-md mx-auto mt-4 flex flex-col gap-4'>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni
