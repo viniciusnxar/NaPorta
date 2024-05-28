@@ -62,6 +62,7 @@ export default function UserForm({ user, onSave }) {
           setAddressProp={handleAddressChange}
         />
         <div className='p-0 rounded-lg relative max-w-[120px]'>
+          <label>Imagem: </label>
           <EditableImage link={image} setLink={setImage} />
         </div>
         {loggedInUserData.admin && (

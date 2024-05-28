@@ -37,14 +37,13 @@ export default function MenuItemForm({ onSubmit, menuItem }) {
           category,
         })
       }
-      className='mt-8 max-w-2xl mx-auto'
+      className='max-w-2xl mx-auto mt-8'
     >
       <div
-        className='md:grid items-start gap-4'
-        style={{ gridTemplateColumns: '.3fr .7fr' }}
+        // className='md:grid items-start gap-4'
+        // style={{ gridTemplateColumns: '.3fr .7fr' }}
       >
         <div>
-          <EditableImage link={image} setLink={setImage} />
         </div>
         <div className='grow'>
           <label>
@@ -92,6 +91,13 @@ export default function MenuItemForm({ onSubmit, menuItem }) {
             props={extraIngredientPrices}
             setProps={setExtraIngredientPrices}
           />
+          <div className='p-0 rounded-lg relative max-w-[120px]'>
+          <label>Imagem: </label>
+          <EditableImage link={image} setLink={setImage} />
+        </div>
+        <div className='py-2'>
+
+        </div>
           <button type='submit'>Salvar</button>
         </div>
       </div>
