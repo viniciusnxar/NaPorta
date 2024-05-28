@@ -25,7 +25,7 @@ export default function LoginPage() {
         <input type="email" name="email" placeholder="email" value={email}
                disabled={loginInProgress}
                onChange={ev => setEmail(ev.target.value)} />
-        <input type="password" name="password" placeholder="password" value={password}
+        <input type="password" name="password" placeholder="senha" value={password}
                disabled={loginInProgress}
                onChange={ev => setPassword(ev.target.value)}/>
         <button disabled={loginInProgress} type="submit">Login</button>

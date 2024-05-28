@@ -47,7 +47,9 @@ export default function MenuItemForm({ onSubmit, menuItem }) {
           <EditableImage link={image} setLink={setImage} />
         </div>
         <div className='grow'>
-          <label>Nome do item</label>
+          <label>
+            Nome do item<span className='text-red-400'>**</span>
+          </label>
           <input
             type='text'
             value={name}
@@ -59,7 +61,14 @@ export default function MenuItemForm({ onSubmit, menuItem }) {
             value={description}
             onChange={(ev) => setDescription(ev.target.value)}
           />
-          <label>Categoria</label>
+
+          <label>Valor<span className='text-red-400'>**</span></label>
+          <input
+            type='text'
+            value={basePrice}
+            onChange={(ev) => setBasePrice(ev.target.value)}
+          />
+                    <label>Categoria<span className='text-red-400'>**</span></label>
           <select
             value={category}
             onChange={(ev) => setCategory(ev.target.value)}
@@ -71,12 +80,6 @@ export default function MenuItemForm({ onSubmit, menuItem }) {
                 </option>
               ))}
           </select>
-          <label>Preço base</label>
-          <input
-            type='text'
-            value={basePrice}
-            onChange={(ev) => setBasePrice(ev.target.value)}
-          />
           <MenuItemPriceProps
             name={'Tamanhos'}
             addLabel={'Add tamanho do item'}
@@ -89,7 +92,7 @@ export default function MenuItemForm({ onSubmit, menuItem }) {
             props={extraIngredientPrices}
             setProps={setExtraIngredientPrices}
           />
-          <button type='submit'>Salvas</button>
+          <button type='submit'>Salvar</button>
         </div>
       </div>
     </form>

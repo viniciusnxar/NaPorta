@@ -48,14 +48,14 @@ export default function MenuItemPriceProps({name,addLabel,props,setProps}) {
             <div>
               <label>Nome</label>
               <input type="text"
-                     placeholder="Size name"
+                     placeholder="Insira"
                      value={size.name}
                      onChange={ev => editProp(ev, index, 'name')}
               />
             </div>
             <div>
               <label>Preço Extra</label>
-              <input type="text" placeholder="Extra price"
+              <input type="text" placeholder="Preço extra"
                      value={size.price}
                      onChange={ev => editProp(ev, index, 'price')}
               />

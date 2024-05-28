@@ -32,7 +32,7 @@ export default function CartProduct({product,onRemove}) {
         <div className="ml-2">
           <button
             type="button"
-            onClick={() => onRemove(index)}
+            onClick={() => onRemove(product.index)}
             className="p-2">
             <Trash />
           </button>

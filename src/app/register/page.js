@@ -50,7 +50,7 @@ export default function RegisterPage() {
         <input type="email" placeholder="email" value={email}
                disabled={creatingUser}
                onChange={ev => setEmail(ev.target.value)} />
-        <input type="password" placeholder="password" value={password}
+        <input type="password" placeholder="senha" value={password}
                disabled={creatingUser}
                 onChange={ev => setPassword(ev.target.value)}/>
         <button type="submit" disabled={creatingUser}>
