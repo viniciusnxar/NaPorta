@@ -91,7 +91,7 @@ export default function CategoriesPage() {
                 : 'Novo nome da categoria'}
               {editedCategory && (
                 <>
-                  : <b>{editedCategory.name}</b>
+                  : <b className='text-primary'>{editedCategory.name}</b>
                 </>
               )}
             </label>

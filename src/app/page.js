@@ -2,13 +2,13 @@ import Header from '@/components/layout/Header';
 import Hero from '@/components/layout/Hero';
 import HomeMenu from '@/components/layout/HomeMenu';
 import SectionHeaders from '@/components/layout/SubHeader';
-
+import MenuPage from '@/components/menu/MenuCategory'
 export default function Home() {
   return (
     <>
       <Hero />
       <HomeMenu />
-      <section className='text-center my-16' id='about'>
+      {/* <section className='text-center my-16' id='about'>
         <SectionHeaders 
         // subHeader={'Nossa historia'} 
         mainHeader={'Sobre'} />
@@ -29,7 +29,8 @@ export default function Home() {
             sit vitae voluptates? Eos, tenetur.
           </p>
         </div>
-      </section>
+      </section> */}
+        <MenuPage></MenuPage>
       <section className='text-center my-8' id='contact'>
         <SectionHeaders subHeader={''} mainHeader={'Contato'} />
         <div className='mt-8'>
