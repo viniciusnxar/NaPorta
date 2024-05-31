@@ -89,7 +89,7 @@ export default function Header() {
           </Link>
           <Link href={'/'}>Home</Link>
           <Link href={'/menu'}>Menu</Link>
-          <Link href={'/#about'}>Sobre</Link>
+          <Link href={'/#categories'}>Categorias</Link>
           <Link href={'/#contact'}>Contato</Link>
         </nav>
         <nav className='flex items-center gap-4 text-gray-500 font-semibold'>

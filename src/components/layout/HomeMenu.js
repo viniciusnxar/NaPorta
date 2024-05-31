@@ -4,12 +4,13 @@ import MenuItem from '@/components/menu/MenuItem';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
+//.slice define a quantidade de itens irão aparecer 
 export default function HomeMenu() {
   const [bestSellers, setBestSellers] = useState([]);
   useEffect(() => {
     fetch('/api/menu-items').then((res) => {
       res.json().then((menuItems) => {
-        setBestSellers(menuItems.slice(-3));
+        setBestSellers(menuItems.slice());
       });
     });
   }, []);
