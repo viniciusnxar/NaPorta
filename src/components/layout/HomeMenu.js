@@ -10,7 +10,7 @@ export default function HomeMenu() {
   useEffect(() => {
     fetch('/api/menu-items').then((res) => {
       res.json().then((menuItems) => {
-        setBestSellers(menuItems.slice());
+        setBestSellers(menuItems.slice(-3));
       });
     });
   }, []);
