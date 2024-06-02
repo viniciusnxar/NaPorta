@@ -4,34 +4,42 @@ import { usePathname } from 'next/navigation';
 
 export default function UserTabs({ ChecarAdmin }) {
   const path = usePathname();
+  const isActive = (currentPath) => path === currentPath;
+
   return (
-    <div className='flex max-w-4xl mx-auto gap-2 tabs justify-center flex-wrap'>
-      <Link className={path === '/profile' ? 'active' : ''} href={'/profile'}>
+    <div className='flex max-w-4xl mx-auto gap-4 justify-center flex-wrap my-4'>
+      <Link
+        href='/profile'
+        className={`tab ${isActive('/profile') ? 'active' : ''}`}
+      >
         Perfil
       </Link>
       {ChecarAdmin && (
         <>
           <Link
-            href={'/categories'}
-            className={path === '/categories' ? 'active' : ''}
+            href='/categories'
+            className={`tab ${isActive('/categories') ? 'active' : ''}`}
           >
             Categorias
           </Link>
           <Link
-            href={'/menu-items'}
-            className={path.includes('menu-items') ? 'active' : ''}
+            href='/menu-items'
+            className={`tab ${path.includes('menu-items') ? 'active' : ''}`}
           >
-            Itens do menu
+            Menu
           </Link>
           <Link
-            className={path.includes('/users') ? 'active' : ''}
-            href={'/users'}
+            href='/users'
+            className={`tab ${isActive('/users') ? 'active' : ''}`}
           >
             Usuários
           </Link>
         </>
       )}
-      <Link className={path === '/orders' ? 'active' : ''} href={'/orders'}>
+      <Link
+        href='/orders'
+        className={`tab ${isActive('/orders') ? 'active' : ''}`}
+      >
         Pedidos
       </Link>
     </div>

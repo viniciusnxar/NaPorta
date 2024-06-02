@@ -10,10 +10,13 @@ export default function AddressInputs({
   const { telefone, endereco, cep, cidade, estado } = addressProps;
 
   useEffect(() => {
-    if (cep && cep.length === 9) { // Considerando o formato XXXXX-XXX
+    if (cep && cep.length === 9) {
+      // Considerando o formato XXXXX-XXX
       const fetchAddressFromCep = async (cep) => {
         try {
-          const response = await axios.get(`https://viacep.com.br/ws/${cep.replace('-', '')}/json/`);
+          const response = await axios.get(
+            `https://viacep.com.br/ws/${cep.replace('-', '')}/json/`
+          );
           if (response.data.erro) {
             throw new Error('CEP não encontrado');
           }
@@ -22,7 +25,9 @@ export default function AddressInputs({
           setAddressProp('cidade', localidade);
           setAddressProp('estado', uf);
         } catch (error) {
-          toast.error('CEP não encontrado. Por favor, verifique e tente novamente.');
+          toast.error(
+            'CEP não encontrado. Por favor, verifique e tente novamente.'
+          );
           setAddressProp('endereco', '');
           setAddressProp('cidade', '');
           setAddressProp('estado', '');
@@ -43,7 +48,9 @@ export default function AddressInputs({
   return (
     <>
       <div>
-        <label className='block text-sm font-medium text-gray-700'>Telefone</label>
+        <label className='block text-sm font-medium text-gray-700'>
+          Telefone
+        </label>
         <input
           disabled={disabled}
           type='tel'
@@ -68,7 +75,9 @@ export default function AddressInputs({
 
       <div className='grid grid-cols-2 gap-2'>
         <div>
-          <label className='block text-sm font-medium text-gray-700'>Estado</label>
+          <label className='block text-sm font-medium text-gray-700'>
+            Estado
+          </label>
           <input
             disabled={disabled}
             type='text'
@@ -79,7 +88,9 @@ export default function AddressInputs({
           />
         </div>
         <div>
-          <label className='block text-sm font-medium text-gray-700'>Cidade</label>
+          <label className='block text-sm font-medium text-gray-700'>
+            Cidade
+          </label>
           <input
             disabled={disabled}
             type='text'
@@ -92,7 +103,9 @@ export default function AddressInputs({
       </div>
 
       <div>
-        <label className='block text-sm font-medium text-gray-700'>Endereço (se tiver complemento, informar)</label>
+        <label className='block text-sm font-medium text-gray-700'>
+          Endereço (se tiver complemento, informar)
+        </label>
         <input
           disabled={disabled}
           type='text'

@@ -44,7 +44,7 @@ export default function OrdersPage() {
                       ' p-2 rounded-md text-white w-24 text-center'
                     }
                   >
-                    {order.paid ? 'Paid' : 'Not paid'}
+                    {order.paid ? 'Pago' : 'Não pago'}
                   </div>
                 </div>
                 <div className='grow'>

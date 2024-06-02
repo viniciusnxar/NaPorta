@@ -15,12 +15,14 @@ export default function CategoriesPage() {
     fetchCategories();
   }, []);
 
-  function fetchCategories() {
-    fetch('/api/categories').then((res) => {
-      res.json().then((categories) => {
-        setCategories(categories);
-      });
-    });
+  async function fetchCategories() {
+    try {
+      const res = await fetch('/api/categories');
+      const categories = await res.json();
+      setCategories(categories);
+    } catch (error) {
+      toast.error('Erro ao buscar categorias');
+    }
   }
 
   async function handleCategorySubmit(ev) {
@@ -30,21 +32,24 @@ export default function CategoriesPage() {
       if (editedCategory) {
         data._id = editedCategory._id;
       }
-      const response = await fetch('/api/categories', {
-        method: editedCategory ? 'PUT' : 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      });
-      setCategoryName('');
-      fetchCategories();
-      setEditedCategory(null);
-      if (response.ok) resolve();
-      else reject();
+      try {
+        const response = await fetch('/api/categories', {
+          method: editedCategory ? 'PUT' : 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
+        setCategoryName('');
+        fetchCategories();
+        setEditedCategory(null);
+        if (response.ok) resolve();
+        else reject();
+      } catch (error) {
+        reject(error);
+      }
     });
+
     await toast.promise(creationPromise, {
-      loading: editedCategory
-        ? 'Atualizando categoria...'
-        : 'Criando nova categoria...',
+      loading: editedCategory ? 'Atualizando categoria...' : 'Criando nova categoria...',
       success: editedCategory ? 'Categoria atualizada!' : 'Categoria criada!',
       error: 'Erro...',
     });
@@ -52,13 +57,17 @@ export default function CategoriesPage() {
 
   async function handleDeleteClick(_id) {
     const promise = new Promise(async (resolve, reject) => {
-      const response = await fetch('/api/categories?_id=' + _id, {
-        method: 'DELETE',
-      });
-      if (response.ok) {
-        resolve();
-      } else {
-        reject();
+      try {
+        const response = await fetch('/api/categories?_id=' + _id, {
+          method: 'DELETE',
+        });
+        if (response.ok) {
+          resolve();
+        } else {
+          reject();
+        }
+      } catch (error) {
+        reject(error);
       }
     });
 
@@ -72,11 +81,11 @@ export default function CategoriesPage() {
   }
 
   if (profileLoading) {
-    return 'Carregando informações do usuário...';
+    return <div className='text-center mt-8'>Carregando informações do usuário...</div>;
   }
 
   if (!profileData.admin) {
-    return 'Você não é um Admin do sistema!!!';
+    return <div className='text-center mt-8 text-red-500'>Você não é um Admin do sistema!!!</div>;
   }
 
   return (
@@ -85,10 +94,8 @@ export default function CategoriesPage() {
       <form className='mt-8' onSubmit={handleCategorySubmit}>
         <div className='flex gap-2 items-end'>
           <div className='grow'>
-            <label>
-              {editedCategory
-                ? 'Atualizar Categoria'
-                : 'Novo nome da categoria'}
+            <label className='block text-sm font-medium text-gray-700'>
+              {editedCategory ? 'Atualizar Categoria' : 'Novo nome da categoria'}
               {editedCategory && (
                 <>
                   : <b className='text-primary'>{editedCategory.name}</b>
@@ -99,10 +106,14 @@ export default function CategoriesPage() {
               type='text'
               value={categoryName}
               onChange={(ev) => setCategoryName(ev.target.value)}
+              className='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm'
             />
           </div>
           <div className='pb-2 flex gap-2'>
-            <button className='border border-primary' type='submit'>
+            <button
+              className='border border-primary px-4 py-2 rounded-md bg-primary text-white'
+              type='submit'
+            >
               {editedCategory ? 'Atualizar' : 'Criar'}
             </button>
             <button
@@ -111,6 +122,7 @@ export default function CategoriesPage() {
                 setEditedCategory(null);
                 setCategoryName('');
               }}
+              className='border border-gray-300 px-4 py-2 rounded-md'
             >
               Cancelar
             </button>
@@ -133,6 +145,7 @@ export default function CategoriesPage() {
                     setEditedCategory(c);
                     setCategoryName(c.name);
                   }}
+                  className='text-blue-600 hover:underline'
                 >
                   Editar
                 </button>

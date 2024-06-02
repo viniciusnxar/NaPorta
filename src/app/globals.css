@@ -47,3 +47,29 @@ div.tabs > *.active{
 .flying-button-parent button{
     @apply border-primary bg-primary text-white rounded-full;
 }
+.tab {
+    padding: 0.5rem 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.375rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: #6b7280;
+    transition: all 0.2s;
+  }
+  
+  .tab:hover {
+    border-color: #d1d5db;
+    color: #111827;
+  }
+  
+  .tab.active {
+    border-color: #3b82f6;
+    color: #3b82f6;
+    background-color: #eff6ff;
+  }
+  
+  .tab.active:hover {
+    border-color: #2563eb;
+    color: #2563eb;
+  }
+  
