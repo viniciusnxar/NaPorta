@@ -23,14 +23,14 @@ export default function CartPage() {
   }, []);
 
   useEffect(() => {
-    if (profileData?.city) {
-      const { phone, streetAddress, city, postalCode, country } = profileData;
+    if (profileData?.cidade) {
+      const { telefone, endereco, cidade, cep, estado } = profileData;
       const addressFromProfile = {
-        phone,
-        streetAddress,
-        city,
-        postalCode,
-        country,
+        telefone,
+        endereco,
+        cidade,
+        cep,
+        estado,
       };
       setAddress(addressFromProfile);
     }
