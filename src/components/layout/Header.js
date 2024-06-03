@@ -108,17 +108,6 @@ function AuthLinks({ status, userName, ChecarAdmin }) {
 export default function Header() {
   // remover depois
   ChecarAdmin = true
-  const session = useSession();
-  const status = session?.status;
-  const userData = session.data?.user;
-  let userName = userData?.name || userData?.email;
-  const { cartProducts } = useContext(CartContext);
-  const [mobileNavOpen, setMobileNavOpen] = useState(false);
-  if (userName && userName.includes(' ')) {
-    userName = userName.split(' ')[0];
-  }
-
-  const ChecarAdmin = userData?.admin;
 
   return (
     <header className='bg-[#F7F7F7]'>
