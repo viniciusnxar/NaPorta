@@ -12,6 +12,7 @@ export default function UserForm({ user, onSave }) {
   const [cep, setcep] = useState(user?.cep || '');
   const [cidade, setcidade] = useState(user?.cidade || '');
   const [estado, setestado] = useState(user?.estado || '');
+  const [numerocep, setnumerocep] = useState(user?.numerocep || '');
   const [admin, setAdmin] = useState(user?.admin || false);
   const { data: loggedInUserData } = useProfile();
 
@@ -21,6 +22,8 @@ export default function UserForm({ user, onSave }) {
     if (propName === 'cep') setcep(value);
     if (propName === 'cidade') setcidade(value);
     if (propName === 'estado') setestado(value);
+    if (propName === 'numerocep') setnumerocep(value);
+
   }
 
   return (
@@ -38,6 +41,7 @@ export default function UserForm({ user, onSave }) {
             cidade,
             estado,
             cep,
+            numerocep,
           })
         }
       >
@@ -64,7 +68,7 @@ export default function UserForm({ user, onSave }) {
         </div>
 
         <AddressInputs
-          addressProps={{ telefone, endereco, cep, cidade, estado }}
+          addressProps={{ telefone, endereco, cep, cidade, estado, numerocep }}
           setAddressProp={handleAddressChange}
         />
 

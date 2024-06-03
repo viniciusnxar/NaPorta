@@ -8,6 +8,7 @@ const UserInfoSchema = new Schema(
     cidade: { type: String },
     estado: { type: String },
     telefone: { type: String },
+    numerocep: { type: String },
     admin: { type: Boolean, default: false },
   },
   { timestamps: true }

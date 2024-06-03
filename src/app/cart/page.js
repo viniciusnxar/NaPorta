@@ -24,8 +24,8 @@ export default function CartPage() {
 
   useEffect(() => {
     if (profileData?.cidade) {
-      const { telefone, endereco, cidade, cep, estado } = profileData;
-      setAddress({ telefone, endereco, cidade, cep, estado });
+      const { telefone, endereco, cidade, cep, estado, numerocep } = profileData;
+      setAddress({ telefone, endereco, cidade, cep, estado, numerocep });
     }
   }, [profileData]);
 

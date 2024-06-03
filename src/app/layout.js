@@ -1,8 +1,10 @@
+import { ChecarAdmin } from '@/app/api/auth/[...nextauth]/route';
 import { AppProvider } from '@/components/AppContext';
 import Header from '@/components/layout/Header';
 import { Roboto } from 'next/font/google';
 import './globals.css';
 import { Toaster } from 'react-hot-toast';
+import { UserInfo } from '@/models/UserInfo';
 
 const fonte = Roboto({ subsets: ['latin'], weight: ['400', '500', '700'] });
 
@@ -12,6 +14,7 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  
   return (
     <html lang='pt-BR' className='scroll-smooth'>
       <head>
@@ -26,7 +29,7 @@ export default function RootLayout({ children }) {
       </head>
       <body className={`${fonte.className} antialiased`}>
         <AppProvider>
-          <Header />
+          <Header ChecarAdmin={UserInfo?.admin}/>
           <main className='max-w-7xl mx-auto p-4'>
             <Toaster />
             {children}

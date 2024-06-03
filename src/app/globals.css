@@ -63,13 +63,13 @@ div.tabs > *.active{
   }
   
   .tab.active {
-    border-color: #3b82f6;
-    color: #3b82f6;
+    border-color: #EA1D2C;
+    color: #EA1D2C;
     background-color: #eff6ff;
   }
   
   .tab.active:hover {
-    border-color: #2563eb;
-    color: #2563eb;
+    border-color: #6f0f16;
+    color: #6f0f16;
   }
   

@@ -7,7 +7,7 @@ export default function AddressInputs({
   setAddressProp,
   disabled = false,
 }) {
-  const { telefone, endereco, cep, cidade, estado } = addressProps;
+  const { telefone, endereco, cep, cidade, estado, numerocep } = addressProps;
 
   useEffect(() => {
     if (cep && cep.length === 9) {
@@ -101,9 +101,37 @@ export default function AddressInputs({
           />
         </div>
       </div>
+      <div className='grid grid-cols-2 gap-2'>
+        <div>
+          <label className='block text-sm font-medium text-gray-700'>
+          Endereço
+          </label>
+          <input
+            disabled={disabled}
+            type='text'
+            placeholder='Endereço'
+            value={endereco || ''}
+            onChange={(ev) => setAddressProp('endereco', ev.target.value)}
+            className='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm'
+          />
+        </div>
+        <div>
+          <label className='block text-sm font-medium text-gray-700'>
+            Número e Complemento
+          </label>
+          <input
+            disabled={disabled}
+            type='text'
+            placeholder='Número e Complemento'
+            value={numerocep || ''}
+            onChange={(ev) => setAddressProp('numerocep', ev.target.value)}
+            className='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm'
+          />
+        </div>
+      </div>
 
       <div>
-        <label className='block text-sm font-medium text-gray-700'>
+        {/* <label className='block text-sm font-medium text-gray-700'>
           Endereço (se tiver complemento, informar)
         </label>
         <input
@@ -113,7 +141,7 @@ export default function AddressInputs({
           value={endereco || ''}
           onChange={(ev) => setAddressProp('endereco', ev.target.value)}
           className='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm'
-        />
+        /> */}
       </div>
     </>
   );
