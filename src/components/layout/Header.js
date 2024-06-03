@@ -8,6 +8,7 @@ import { useContext, useState } from 'react';
 
 
 function AuthLinks({ status, userName, ChecarAdmin }) {
+  const ChecarAdmin = true
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const toggleDropdown = () => setDropdownOpen(!dropdownOpen);
 
@@ -107,7 +108,6 @@ function AuthLinks({ status, userName, ChecarAdmin }) {
 
 export default function Header() {
   // remover depois
-  ChecarAdmin = true
   const session = useSession();
   const status = session?.status;
   const userData = session.data?.user;
