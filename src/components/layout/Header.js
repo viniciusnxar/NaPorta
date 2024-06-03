@@ -116,7 +116,8 @@ export default function Header() {
   if (userName && userName.includes(' ')) {
     userName = userName.split(' ')[0];
   }
-  const ChecarAdmin = userData?.isAdmin;
+  // const ChecarAdmin = userData?.isAdmin;
+    const ChecarAdmin = true
 
   return (
     <header className='bg-[#F7F7F7]'>
