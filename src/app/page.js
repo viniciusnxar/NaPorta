@@ -2,7 +2,7 @@ import Header from '@/components/layout/Header';
 import Hero from '@/components/layout/Hero';
 import HomeMenu from '@/components/layout/HomeMenu';
 import SectionHeaders from '@/components/layout/SubHeader';
-import MenuPage from '@/components/menu/MenuCategory'
+import MenuPage from '@/components/menu/MenuCategory';
 export default function Home() {
   return (
     <>
@@ -30,16 +30,12 @@ export default function Home() {
           </p>
         </div>
       </section> */}
-        <MenuPage></MenuPage>
+      <MenuPage></MenuPage>
       <section className='text-center my-8' id='contact'>
-        <SectionHeaders subHeader={''} mainHeader={'Contato'} />
+        <SectionHeaders subHeader={''} mainHeader={''} />
         <div className='mt-8'>
-          <a
-            className='text-4xl underline text-gray-500'
-            href='tel:+46738123123'
-          >
-            (85)9 0000-0000
-          </a>
+          <a className='text-4xl underline text-gray-500'href='tel:+46738123123'
+          ></a>
         </div>
       </section>
     </>

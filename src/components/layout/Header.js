@@ -6,7 +6,7 @@ import { signOut, useSession } from 'next-auth/react';
 import Link from 'next/link';
 import { useContext, useState } from 'react';
 
-
+// Componente para links de autenticação
 function AuthLinks({ status, userName, ChecarAdmin }) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const toggleDropdown = () => setDropdownOpen(!dropdownOpen);
@@ -14,34 +14,39 @@ function AuthLinks({ status, userName, ChecarAdmin }) {
   if (status === 'authenticated') {
     return (
       <>
-        <div className="relative inline-block text-left">
+        <div className='relative inline-block text-left'>
           <button
-            type="button"
+            type='button'
             onClick={toggleDropdown}
-            className="whitespace-nowrap text-primary inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none"
+            className='whitespace-nowrap text-primary inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none'
           >
             Perfil
             <svg
-              className="-mr-1 ml-2 h-5 w-5"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-              aria-hidden="true"
+              className='-mr-1 ml-2 h-5 w-5'
+              xmlns='http://www.w3.org/2000/svg'
+              viewBox='0 0 20 20'
+              fill='currentColor'
+              aria-hidden='true'
             >
               <path
-                fillRule="evenodd"
-                d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
-                clipRule="evenodd"
+                fillRule='evenodd'
+                d='M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z'
+                clipRule='evenodd'
               />
             </svg>
           </button>
           {dropdownOpen && (
-            <div className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
-              <div className="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+            <div className='origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5'>
+              <div
+                className='py-1'
+                role='menu'
+                aria-orientation='vertical'
+                aria-labelledby='options-menu'
+              >
                 <Link
                   href='/profile'
-                  className="block px-4 py-2 text-sm text-gray-700"
-                  role="menuitem"
+                  className='block px-4 py-2 text-sm text-gray-700'
+                  role='menuitem'
                 >
                   Perfil
                 </Link>
@@ -49,22 +54,22 @@ function AuthLinks({ status, userName, ChecarAdmin }) {
                   <>
                     <Link
                       href='/categories'
-                      className="block px-4 py-2 text-sm text-gray-700"
-                      role="menuitem"
+                      className='block px-4 py-2 text-sm text-gray-700'
+                      role='menuitem'
                     >
                       Categorias
                     </Link>
                     <Link
                       href='/menu-items'
-                      className="block px-4 py-2 text-sm text-gray-700"
-                      role="menuitem"
+                      className='block px-4 py-2 text-sm text-gray-700'
+                      role='menuitem'
                     >
                       Menu
                     </Link>
                     <Link
                       href='/users'
-                      className="block px-4 py-2 text-sm text-gray-700"
-                      role="menuitem"
+                      className='block px-4 py-2 text-sm text-gray-700'
+                      role='menuitem'
                     >
                       Usuários
                     </Link>
@@ -72,8 +77,8 @@ function AuthLinks({ status, userName, ChecarAdmin }) {
                 )}
                 <Link
                   href='/orders'
-                  className="block px-4 py-2 text-sm text-gray-700"
-                  role="menuitem"
+                  className='block px-4 py-2 text-sm text-gray-700'
+                  role='menuitem'
                 >
                   Pedidos
                 </Link>
@@ -81,10 +86,7 @@ function AuthLinks({ status, userName, ChecarAdmin }) {
             </div>
           )}
         </div>
-        <button
-          onClick={() => signOut()}
-          className='text-primary'
-        >
+        <button onClick={() => signOut()} className='text-primary'>
           Logout
         </button>
       </>
@@ -105,19 +107,25 @@ function AuthLinks({ status, userName, ChecarAdmin }) {
   }
 }
 
+// Componente principal do cabeçalho
 export default function Header() {
-  // remover depois
+  // Obtém a sessão atual
   const session = useSession();
   const status = session?.status;
   const userData = session.data?.user;
   let userName = userData?.name || userData?.email;
+
+  // Obtém o contexto do carrinho de compras
   const { cartProducts } = useContext(CartContext);
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
+
+  // Ajusta o nome do usuário para mostrar apenas o primeiro nome
   if (userName && userName.includes(' ')) {
     userName = userName.split(' ')[0];
   }
-  // const ChecarAdmin = userData?.isAdmin;
-    const ChecarAdmin = true
+
+  // Determina se o usuário é administrador (para testes, definido como true)
+  const ChecarAdmin = true;
 
   return (
     <header className='bg-[#F7F7F7]'>
@@ -137,19 +145,24 @@ export default function Header() {
           <button
             className='p-2'
             onClick={() => setMobileNavOpen(!mobileNavOpen)}
-            aria-label="Open Mobile Menu"
+            aria-label='Open Mobile Menu'
           >
             <Bars2 />
           </button>
         </div>
+        {/* Web View */}
         <nav className='hidden md:flex items-center gap-8 text-gray-500 font-semibold'>
           <Link href={'/'}>Home</Link>
           <Link href={'/menu'}>Menu</Link>
           <Link href={'/#categories'}>Categorias</Link>
-          <Link href={'/#contact'}>Contato</Link>
+          {/* <Link href={'/#contact'}>Contato</Link> */}
         </nav>
         <div className='hidden md:flex items-center gap-4 text-gray-500 font-semibold'>
-          <AuthLinks status={status} userName={userName} ChecarAdmin={ChecarAdmin} />
+          <AuthLinks
+            status={status}
+            userName={userName}
+            ChecarAdmin={ChecarAdmin}
+          />
           <Link href={'/cart'} className='relative'>
             <ShoppingCart />
             {cartProducts?.length > 0 && (
@@ -160,13 +173,26 @@ export default function Header() {
           </Link>
         </div>
       </div>
+      {/* Mobile View */}
       {mobileNavOpen && (
         <div className='md:hidden p-4 bg-gray-200 rounded-lg mt-2 flex flex-col gap-2 text-center'>
-          <Link href={'/'} onClick={() => setMobileNavOpen(false)}>Home</Link>
-          <Link href={'/menu'} onClick={() => setMobileNavOpen(false)}>Menu</Link>
-          <Link href={'/#categories'} onClick={() => setMobileNavOpen(false)}>Categorias</Link>
-          <Link href={'/#contact'} onClick={() => setMobileNavOpen(false)}>Contato</Link>
-          <AuthLinks status={status} userName={userName} ChecarAdmin={ChecarAdmin} />
+          <Link href={'/'} onClick={() => setMobileNavOpen(false)}>
+            Home
+          </Link>
+          <Link href={'/menu'} onClick={() => setMobileNavOpen(false)}>
+            Menu
+          </Link>
+          <Link href={'/#categories'} onClick={() => setMobileNavOpen(false)}>
+            Categorias
+          </Link>
+          {/* <Link href={'/#contact'} onClick={() => setMobileNavOpen(false)}>
+            Contato
+          </Link> */}
+          <AuthLinks
+            status={status}
+            userName={userName}
+            ChecarAdmin={ChecarAdmin}
+          />
         </div>
       )}
     </header>

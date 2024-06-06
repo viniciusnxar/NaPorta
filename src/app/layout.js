@@ -1,12 +1,12 @@
 import { ChecarAdmin } from '@/app/api/auth/[...nextauth]/route';
 import { AppProvider } from '@/components/AppContext';
 import Header from '@/components/layout/Header';
-import { Roboto } from 'next/font/google';
+import { Poppins } from 'next/font/google';
 import './globals.css';
 import { Toaster } from 'react-hot-toast';
 import { UserInfo } from '@/models/UserInfo';
-
-const fonte = Roboto({ subsets: ['latin'], weight: ['400', '500', '700'] });
+import Footer from '@/components/layout/Footer';
+const fonte = Poppins({ subsets: ['latin'], weight: ['400', '500', '700'] });
 
 export const metadata = {
   title: 'NaPorta',
@@ -14,7 +14,6 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  
   return (
     <html lang='pt-BR' className='scroll-smooth'>
       <head>
@@ -27,16 +26,14 @@ export default function RootLayout({ children }) {
         <link rel='icon' href='/favicon.ico' />
         <title>NaPorta</title>
       </head>
-      <body className={`${fonte.className} antialiased`}>
+      <body className={`${fonte.className}`}>
         <AppProvider>
-          <Header ChecarAdmin={UserInfo?.admin}/>
+          <Header ChecarAdmin={UserInfo?.admin} />
           <main className='max-w-7xl mx-auto p-4'>
             <Toaster />
             {children}
           </main>
-          <footer className='border-t p-8 text-center text-gray-500 mt-16'>
-            &copy; 2024 Baidu LTDA
-          </footer>
+          <Footer />
         </AppProvider>
       </body>
     </html>
