@@ -8,7 +8,9 @@ const stripe = require('stripe')(process.env.STRIPE_SK);
 // Handler para o método POST
 export async function POST(req) {
   // Conecta ao MongoDB
-  mongoose.connect(process.env.MONGODB_URI);
+  if (mongoose.connection.readyState === 0) {
+    await mongoose.connect(process.env.MONGODB_URI);
+  }
 
   // Extrai produtos do carrinho e endereço do corpo da requisição
   const { cartProducts, address } = await req.json();
@@ -63,9 +65,15 @@ export async function POST(req) {
         product_data: {
           name: productName,
         },
-        unit_amount: productPrice * 100, // O preço no Stripe é em centavos
+        unit_amount: Math.round(productPrice * 100), // O preço no Stripe é em centavos
       },
     });
+  }
+
+  // Verifica se o NEXTAUTH_URL está definido corretamente
+  const NEXTAUTH_URL = process.env.NEXTAUTH_URL;
+  if (!NEXTAUTH_URL || !NEXTAUTH_URL.startsWith('http')) {
+    throw new Error('NEXTAUTH_URL is not defined or invalid');
   }
 
   // Cria uma sessão de checkout no Stripe
@@ -73,12 +81,8 @@ export async function POST(req) {
     line_items: stripeLineItems,
     mode: 'payment',
     customer_email: userEmail,
-    success_url:
-      process.env.NEXTAUTH_URL +
-      'orders/' +
-      orderDoc._id.toString() +
-      '?clear-cart=1', // URL de sucesso após o pagamento
-    cancel_url: process.env.NEXTAUTH_URL + 'cart?canceled=1', // URL de cancelamento
+    success_url: `${NEXTAUTH_URL}/orders/${orderDoc._id.toString()}?clear-cart=1`, // URL de sucesso após o pagamento
+    cancel_url: `${NEXTAUTH_URL}/cart?canceled=1`, // URL de cancelamento
     metadata: { orderId: orderDoc._id.toString() }, // Metadata com o ID do pedido
     payment_intent_data: {
       metadata: { orderId: orderDoc._id.toString() }, // Metadata adicional
@@ -86,14 +90,16 @@ export async function POST(req) {
     shipping_options: [
       {
         shipping_rate_data: {
-          display_name: 'Delivery fee', // Nome da taxa de entrega
+          display_name: 'Frete', // Nome da taxa de entrega
           type: 'fixed_amount',
-          fixed_amount: { amount: 500, currency: 'BRL' }, // Valor fixo da taxa de entrega
+          fixed_amount: { amount: 1000, currency: 'BRL' }, // Valor fixo da taxa de entrega em centavos
         },
       },
     ],
   });
 
   // Retorna a URL da sessão do Stripe como resposta
-  return Response.json(stripeSession.url);
+  return new Response(JSON.stringify({ url: stripeSession.url }), {
+    headers: { 'Content-Type': 'application/json' },
+  });
 }
