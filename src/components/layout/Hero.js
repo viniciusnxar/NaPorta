@@ -8,9 +8,7 @@ export default function Hero() {
         <h1 className="text-4xl font-semibold">
           lorem<br />
           ipsum<br />
-          da&nbsp;
-          <span className="text-primary">
-            silva
+          da silva
           </span>
         </h1>
         <p className="my-6 text-gray-500 text-sm">
