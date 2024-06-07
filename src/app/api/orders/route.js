@@ -2,6 +2,7 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { Order } from "@/models/Order";
 import mongoose from "mongoose";
 import { getServerSession } from "next-auth";
+import { ChecarAdmin } from '@/app/api/auth/[...nextauth]/route';
 
 export async function GET(req) {
   try {
@@ -23,6 +24,9 @@ export async function GET(req) {
     const url = new URL(req.url);
     const _id = url.searchParams.get('_id');
 
+    // Verifica se o usuário é administrador
+    const isAdmin = await ChecarAdmin();
+
     // Se um ID de pedido foi fornecido, busca o pedido específico no banco de dados
     if (_id) {
       const order = await Order.findById(_id);
@@ -32,7 +36,13 @@ export async function GET(req) {
       return new Response(JSON.stringify(order), { status: 200 });
     }
 
-    // Se nenhum ID de pedido foi fornecido, busca todos os pedidos associados ao email do usuário
+    // Se o usuário é administrador, retorna todos os pedidos
+    if (isAdmin) {
+      const orders = await Order.find();
+      return new Response(JSON.stringify(orders), { status: 200 });
+    }
+
+    // Se não for administrador, retorna apenas os pedidos do usuário
     const orders = await Order.find({ userEmail });
     return new Response(JSON.stringify(orders), { status: 200 });
 
