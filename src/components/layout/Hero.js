@@ -9,7 +9,6 @@ export default function Hero() {
           lorem<br />
           ipsum<br />
           da silva
-          </span>
         </h1>
         <p className="my-6 text-gray-500 text-sm">
         Eum ipsam iste quos suscipit tempora? Aperiam esse fugiat inventore laboriosam officiis quam rem!
