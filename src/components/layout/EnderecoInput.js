@@ -46,103 +46,67 @@ export default function AddressInputs({
   };
 
   return (
-    <>
+    <div>
       <div>
-        <label className='block text-sm font-medium text-gray-700'>
-          Telefone
-        </label>
+        <label className="block text-sm font-medium text-gray-700">CEP</label>
         <input
           disabled={disabled}
-          type='tel'
-          placeholder='Telefone'
-          value={telefone || ''}
-          onChange={(ev) => setAddressProp('telefone', ev.target.value)}
-          className='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm'
-        />
-      </div>
-
-      <div>
-        <label className='block text-sm font-medium text-gray-700'>CEP</label>
-        <input
-          disabled={disabled}
-          type='text'
-          placeholder='CEP'
+          type="text"
+          placeholder="CEP"
           value={cep || ''}
           onChange={(ev) => setAddressProp('cep', formatCep(ev.target.value))}
-          className='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm'
+          className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
         />
       </div>
 
-      <div className='grid grid-cols-2 gap-2'>
+      <div className="grid grid-cols-2 gap-2 mt-4">
         <div>
-          <label className='block text-sm font-medium text-gray-700'>
-            Estado
-          </label>
+          <label className="block text-sm font-medium text-gray-700">Estado</label>
           <input
             disabled={disabled}
-            type='text'
-            placeholder='Estado'
+            type="text"
+            placeholder="Estado"
             value={estado || ''}
             onChange={(ev) => setAddressProp('estado', ev.target.value)}
-            className='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm'
+            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
           />
         </div>
         <div>
-          <label className='block text-sm font-medium text-gray-700'>
-            Cidade
-          </label>
+          <label className="block text-sm font-medium text-gray-700">Cidade</label>
           <input
             disabled={disabled}
-            type='text'
-            placeholder='Cidade'
+            type="text"
+            placeholder="Cidade"
             value={cidade || ''}
             onChange={(ev) => setAddressProp('cidade', ev.target.value)}
-            className='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm'
-          />
-        </div>
-      </div>
-      <div className='grid grid-cols-2 gap-2'>
-        <div>
-          <label className='block text-sm font-medium text-gray-700'>
-          Endereço
-          </label>
-          <input
-            disabled={disabled}
-            type='text'
-            placeholder='Endereço'
-            value={endereco || ''}
-            onChange={(ev) => setAddressProp('endereco', ev.target.value)}
-            className='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm'
-          />
-        </div>
-        <div>
-          <label className='block text-sm font-medium text-gray-700'>
-            Número e Complemento
-          </label>
-          <input
-            disabled={disabled}
-            type='text'
-            placeholder='Número e Complemento'
-            value={numerocep || ''}
-            onChange={(ev) => setAddressProp('numerocep', ev.target.value)}
-            className='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm'
+            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
           />
         </div>
       </div>
 
-      <div>
-        {/* <label className='block text-sm font-medium text-gray-700'>
-          Endereço (se tiver complemento, informar)
-        </label>
+      <div className="mt-4">
+        <label className="block text-sm font-medium text-gray-700">Endereço</label>
         <input
           disabled={disabled}
-          type='text'
-          placeholder='Endereço'
+          type="text"
+          placeholder="Endereço"
           value={endereco || ''}
           onChange={(ev) => setAddressProp('endereco', ev.target.value)}
-          className='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm'
-        /> */}
+          className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
+        />
       </div>
-    </>
+
+      <div className="mt-4">
+        <label className="block text-sm font-medium text-gray-700">Número e Complemento</label>
+        <input
+          disabled={disabled}
+          type="text"
+          placeholder="Número e Complemento"
+          value={numerocep || ''}
+          onChange={(ev) => setAddressProp('numerocep', ev.target.value)}
+          className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
+        />
+      </div>
+    </div>
   );
 }

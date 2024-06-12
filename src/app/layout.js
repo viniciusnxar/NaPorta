@@ -1,4 +1,3 @@
-import { ChecarAdmin } from '@/app/api/auth/[...nextauth]/route';
 import { AppProvider } from '@/components/AppContext';
 import Header from '@/components/layout/Header';
 import { Poppins } from 'next/font/google';

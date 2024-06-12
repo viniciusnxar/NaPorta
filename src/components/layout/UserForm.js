@@ -7,90 +7,138 @@ import { useState } from 'react';
 export default function UserForm({ user, onSave }) {
   const [userName, setUserName] = useState(user?.name || '');
   const [image, setImage] = useState(user?.image || '');
-  const [telefone, settelefone] = useState(user?.telefone || '');
-  const [endereco, setendereco] = useState(user?.endereco || '');
-  const [cep, setcep] = useState(user?.cep || '');
-  const [cidade, setcidade] = useState(user?.cidade || '');
-  const [estado, setestado] = useState(user?.estado || '');
-  const [numerocep, setnumerocep] = useState(user?.numerocep || '');
+  const [telefone, setTelefone] = useState(user?.telefone || '');
   const [admin, setAdmin] = useState(user?.admin || false);
+  const [endereco, setEndereco] = useState(user?.endereco || '');
+  const [cep, setCep] = useState(user?.cep || '');
+  const [cidade, setCidade] = useState(user?.cidade || '');
+  const [estado, setEstado] = useState(user?.estado || '');
+  const [numerocep, setNumeroCep] = useState(user?.numerocep || '');
+
   const { data: loggedInUserData } = useProfile();
 
   function handleAddressChange(propName, value) {
-    if (propName === 'telefone') settelefone(value);
-    if (propName === 'endereco') setendereco(value);
-    if (propName === 'cep') setcep(value);
-    if (propName === 'cidade') setcidade(value);
-    if (propName === 'estado') setestado(value);
-    if (propName === 'numerocep') setnumerocep(value);
+    if (propName === 'telefone') setTelefone(value);
+    if (propName === 'endereco') setEndereco(value);
+    if (propName === 'cep') setCep(value);
+    if (propName === 'cidade') setCidade(value);
+    if (propName === 'estado') setEstado(value);
+    if (propName === 'numerocep') setNumeroCep(value);
+  }
 
+  function handleSave(ev) {
+    ev.preventDefault();
+    onSave(ev, {
+      name: userName,
+      image,
+      telefone,
+      admin,
+      endereco,
+      cidade,
+      estado,
+      cep,
+      numerocep,
+    });
+  }
+
+  function formatTelefone(value) {
+    const cleaned = ('' + value).replace(/\D/g, '');
+    const match = cleaned.match(/^(\d{2})(\d{5})(\d{4})$/);
+    if (match) {
+      return `(${match[1]})${match[2]}${match[3]}`;
+    }
+    return value;
+  }
+
+  function handleTelefoneChange(ev) {
+    const formattedValue = formatTelefone(ev.target.value);
+    setTelefone(formattedValue);
   }
 
   return (
-    <div className='md:flex gap-4'>
-      <div></div>
-      <form
-        className='grow'
-        onSubmit={(ev) =>
-          onSave(ev, {
-            name: userName,
-            image,
-            telefone,
-            admin,
-            endereco,
-            cidade,
-            estado,
-            cep,
-            numerocep,
-          })
-        }
-      >
-        <div>
-          <label className='block text-sm font-medium text-gray-700'>Primeiro e último nome</label>
-          <input
-            type='text'
-            placeholder='Primeiro e último nome'
-            value={userName}
-            onChange={(ev) => setUserName(ev.target.value)}
-            className='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm'
-          />
-        </div>
-        
-        <div>
-          <label className='block text-sm font-medium text-gray-700'>Email</label>
-          <input
-            type='email'
-            disabled={true}
-            value={user?.email}
-            placeholder='Email'
-            className='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm'
-          />
-        </div>
-
-        <AddressInputs
-          addressProps={{ telefone, endereco, cep, cidade, estado, numerocep }}
-          setAddressProp={handleAddressChange}
-        />
-
-        <div className='p-0 rounded-lg relative max-w-[120px]'>
-          <label className='block text-sm font-medium text-gray-700'>Imagem</label>
-          <EditableImage link={image} setLink={setImage} />
-        </div>
-
-        {loggedInUserData.admin && (
-          <div className='mt-4'>
-            <label className='inline-flex items-center gap-2'>
+    <div className='max-w-4xl mx-auto p-4'>
+      <form onSubmit={handleSave}>
+        <div className='bg-white shadow sm:rounded-lg p-4'>
+          <h2 className='text-lg font-medium leading-6 text-gray-900'>
+            Perfil
+          </h2>
+          <div className='grid grid-cols-1 gap-6 sm:grid-cols-2'>
+            <div>
+              <label className='block text-sm font-medium text-gray-700'>
+                Nome
+              </label>
               <input
-                id='adminCb'
-                type='checkbox'
-                className='h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded'
-                checked={admin}
-                onChange={(ev) => setAdmin(ev.target.checked)}
+                type='text'
+                placeholder='Nome'
+                value={userName}
+                onChange={(ev) => setUserName(ev.target.value)}
+                className='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm'
+                required
               />
-              <span className='text-sm font-medium text-gray-700'>Admin</span>
-            </label>
+            </div>
+
+            <div>
+              <label className='block text-sm font-medium text-gray-700'>
+                Telefone
+              </label>
+              <input
+                type='tel'
+                placeholder='Telefone'
+                value={telefone}
+                onChange={handleTelefoneChange}
+                className='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm'
+                required
+              />
+            </div>
+
+            <div>
+              <label className='block text-sm font-medium text-gray-700'>
+                Email
+              </label>
+              <input
+                type='email'
+                disabled
+                value={user?.email}
+                placeholder='Email'
+                className='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm'
+              />
+            </div>
+
+            {loggedInUserData.admin && (
+              <div className='mt-4 sm:col-span-2'>
+                <label className='inline-flex items-center gap-2'>
+                  <input
+                    id='adminCb'
+                    type='checkbox'
+                    className='h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded'
+                    checked={admin}
+                    onChange={(ev) => setAdmin(ev.target.checked)}
+                  />
+                  <span className='text-sm font-medium text-gray-700'>
+                    Admin
+                  </span>
+                </label>
+              </div>
+            )}
           </div>
-        )}
+        </div>
+
+        <div className='bg-white shadow sm:rounded-lg p-4 mt-8'>
+          <h2 className='text-lg font-medium leading-6 text-gray-900'>
+            Endereço
+          </h2>
+          <AddressInputs
+            addressProps={{
+              telefone,
+              endereco,
+              cep,
+              cidade,
+              estado,
+              numerocep,
+            }}
+            setAddressProp={handleAddressChange}
+          />
+        </div>
 
         <button
           type='submit'
