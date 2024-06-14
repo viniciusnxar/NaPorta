@@ -34,7 +34,7 @@ export default function CartPage() {
       (total, product) => total + cartProductPrice(product),
       0
     ) || 0;
-  const frete = 10;
+  const frete = 0.01;
   const total = subtotal + frete;
 
   function handleAddressChange(propName, value) {

@@ -31,7 +31,7 @@ export async function POST(req) {
 
     // Obtém o ID do pedido e o status de pagamento do evento
     const orderId = event?.data?.object?.metadata?.orderId;
-    const isPaid = event?.data?.object?.payment_status === 'paid';
+    const isPaid = event?.data?.object?.payment_status === 'succeeded';
 
     // Se o pagamento foi confirmado, atualiza o status do pedido para pago
     if (isPaid) {

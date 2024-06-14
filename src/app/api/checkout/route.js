@@ -72,27 +72,20 @@ export async function POST(req) {
 
   // Verifica se o NEXTAUTH_URL está definido corretamente
   const NEXTAUTH_URL = process.env.NEXTAUTH_URL;
-  if (!NEXTAUTH_URL || !NEXTAUTH_URL.startsWith('http')) {
-    throw new Error('NEXTAUTH_URL is not defined or invalid');
-  }
-
   // Cria uma sessão de checkout no Stripe
   const stripeSession = await stripe.checkout.sessions.create({
     line_items: stripeLineItems,
     mode: 'payment',
     customer_email: userEmail,
-    success_url: `${NEXTAUTH_URL}/orders/${orderDoc._id.toString()}?clear-cart=1`, // URL de sucesso após o pagamento
+    success_url: `${NEXTAUTH_URL}/orders/${orderDoc._id.toString()}`, // URL de sucesso após o pagamento
     cancel_url: `${NEXTAUTH_URL}/cart?canceled=1`, // URL de cancelamento
     metadata: { orderId: orderDoc._id.toString() }, // Metadata com o ID do pedido
-    payment_intent_data: {
-      metadata: { orderId: orderDoc._id.toString() }, // Metadata adicional
-    },
     shipping_options: [
       {
         shipping_rate_data: {
           display_name: 'Frete', // Nome da taxa de entrega
           type: 'fixed_amount',
-          fixed_amount: { amount: 1000, currency: 'BRL' }, // Valor fixo da taxa de entrega em centavos
+          fixed_amount: { amount: 1, currency: 'BRL' }, // Valor fixo da taxa de entrega em centavos
         },
       },
     ],
