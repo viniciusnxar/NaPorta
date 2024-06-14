@@ -1,17 +1,19 @@
-import Right from "@/components/icons/Right";
-import Image from "next/image";
+import Right from '@/components/icons/Right';
+import Image from 'next/image';
 
 export default function Hero() {
   return (
-    <section className="hero md:mt-4">
-      <div className="py-8 md:py-12">
-        <h1 className="text-4xl font-semibold">
-          lorem<br />
-          ipsum<br />
-          da silva
+    <section className='hero md:mt-4'>
+      <div className='py-8 md:py-12'>
+        <h1 className='text-4xl font-semibold'>
+          Sash
+          <br />
+          Burguer
+          <br />
         </h1>
-        <p className="my-6 text-gray-500 text-sm">
-        Eum ipsam iste quos suscipit tempora? Aperiam esse fugiat inventore laboriosam officiis quam rem!
+        <p className='my-6 text-gray-500 text-sm'>
+          Eum ipsam iste quos suscipit tempora? Aperiam esse fugiat inventore
+          laboriosam officiis quam rem!
         </p>
         {/* <div className="flex gap-4 text-sm">
           <button className="flex justify-center bg-primary uppercase flex items-center gap-2 text-white px-4 py-2 rounded-full">
@@ -24,9 +26,15 @@ export default function Hero() {
           </button>
         </div> */}
       </div>
-      {/* <div className="relative hidden md:block">
-        <Image src={'/pizza.png'} layout={'fill'} objectFit={'contain'} alt={'pizza'} />
-      </div> */}
+      <div className='relative hidden md:block'>
+        <Image
+          src={'https://naporta-bucket.s3.amazonaws.com/9lxe27lk6.jpg'}
+          width={400}
+          height={400}
+          alt={'burguer'}
+          className='mx-auto rounded-lg'
+        />
+      </div>
     </section>
   );
 }
