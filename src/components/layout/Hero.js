@@ -6,7 +6,7 @@ export default function Hero() {
     <section className='hero md:mt-4'>
       <div className='py-8 md:py-12'>
         <h1 className='text-4xl font-semibold'>
-          Sash
+          Smash
           <br />
           Burguer
           <br />
