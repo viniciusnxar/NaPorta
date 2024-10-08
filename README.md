@@ -25,20 +25,21 @@ Siga os passos abaixo para executar o projeto localmente:
 1. Clone o repositório:
 
    
-   git clone [https://github.com/seu-usuario/na-porta.git](https://github.com/viniciusnxar/NaPorta)
+> git clone [https://github.com/seu-usuario/na-porta.git](https://github.com/viniciusnxar/NaPorta)
 
 2. Instale as dependências:
-
-> cd na-porta
-> npm install
-
+`
+cd na-porta
+npm install
+`
 3. Crie um arquivo .env na raiz do projeto e configure suas variáveis de ambiente:
 
 **Exemplo de variáveis de ambiente**
-> MONGODB_URI=mongodb+srv://<user>:<password>@cluster.mongodb.net/na-porta
-> NEXT_PUBLIC_AWS_BUCKET=<aws-bucket-url>
-> STRIPE_SECRET_KEY=<stripe-secret-key>
-
+`
+MONGODB_URI=mongodb+srv://<user>:<password>@cluster.mongodb.net/na-porta
+NEXT_PUBLIC_AWS_BUCKET=<aws-bucket-url>
+STRIPE_SECRET_KEY=<stripe-secret-key>
+`
 4. Execute o servidor de desenvolvimento:
 npm run dev
 
