@@ -29,15 +29,15 @@ Siga os passos abaixo para executar o projeto localmente:
 
 2. Instale as dependências:
 
-cd na-porta
-npm install
+> cd na-porta
+> npm install
 
 3. Crie um arquivo .env na raiz do projeto e configure suas variáveis de ambiente:
 
-# Exemplo de variáveis de ambiente
-MONGODB_URI=mongodb+srv://<user>:<password>@cluster.mongodb.net/na-porta
-NEXT_PUBLIC_AWS_BUCKET=<aws-bucket-url>
-STRIPE_SECRET_KEY=<stripe-secret-key>
+**Exemplo de variáveis de ambiente**
+> MONGODB_URI=mongodb+srv://<user>:<password>@cluster.mongodb.net/na-porta
+> NEXT_PUBLIC_AWS_BUCKET=<aws-bucket-url>
+> STRIPE_SECRET_KEY=<stripe-secret-key>
 
 4. Execute o servidor de desenvolvimento:
 npm run dev
@@ -53,6 +53,6 @@ npm run dev
     /lib: Funções auxiliares para integração com APIs externas (AWS, MongoDB, Stripe).
     /styles: Arquivos CSS e Tailwind para estilização.
 
-Contribuição
+## Contribuição
 
 Contribuições são bem-vindas! Se você quiser sugerir melhorias ou encontrar bugs, sinta-se à vontade para abrir um issue ou enviar um pull request.
