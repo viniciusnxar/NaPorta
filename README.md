@@ -1,46 +1,58 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# NaPorta - Aplicativo de Delivery de Comida
 
-npm install next@latest react@latest react-dom@latest --force
-npm install mongodb --force
-npm install mongoose --force
-npm install react-hot-toast --force
-npm install next-auth --force
-npm install @next-auth/mongodb-adapter --force
-npm install @auth/mongodb-adapter mongodb --force
-npm install bcrypt --force
-npm install react-flying-item --force
+**NaPorta** é um aplicativo de delivery de comida online desenvolvido como parte do projeto aplicado em Front-end. Ele oferece uma plataforma simples e eficiente para conectar restaurantes e clientes, permitindo a visualização de cardápios, o gerenciamento de pedidos e o acompanhamento de entregas em tempo real.
 
-## Getting Started
+## Tecnologias Utilizadas
 
-First, run the development server:
+- **Next.js**: Framework React para a construção da interface e páginas dinâmicas.
+- **MongoDB**: Banco de dados NoSQL utilizado para armazenar informações de usuários, pedidos e restaurantes.
+- **AWS (S3 Bucket)**: Utilizado para o armazenamento de arquivos, como imagens de produtos e perfis de restaurantes.
+- **Stripe**: Integração de pagamentos segura e simplificada.
 
-```bash
+## Funcionalidades
+
+- **Autenticação de Usuário**: Login e cadastro de usuários utilizando autenticação segura.
+- **Carrinho de Compras**: Funcionalidade que permite adicionar, remover e visualizar itens no carrinho de compras.
+- **Lista de Desejos**: Adicionar produtos à lista de desejos para fácil acesso posterior.
+- **Sistema de Avaliações**: Clientes podem avaliar restaurantes e produtos.
+- **Gestão de Pedidos**: Criação, atualização e acompanhamento de pedidos em tempo real.
+- **Processamento de Pagamentos**: Integração com a API do Stripe para processar pagamentos.
+
+## Instalação
+
+Siga os passos abaixo para executar o projeto localmente:
+
+1. Clone o repositório:
+
+   
+   git clone [https://github.com/seu-usuario/na-porta.git](https://github.com/viniciusnxar/NaPorta)
+
+2. Instale as dependências:
+
+cd na-porta
+npm install
+
+3. Crie um arquivo .env na raiz do projeto e configure suas variáveis de ambiente:
+
+# Exemplo de variáveis de ambiente
+MONGODB_URI=mongodb+srv://<user>:<password>@cluster.mongodb.net/na-porta
+NEXT_PUBLIC_AWS_BUCKET=<aws-bucket-url>
+STRIPE_SECRET_KEY=<stripe-secret-key>
+
+4. Execute o servidor de desenvolvimento:
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+5. Abra o navegador e acesse http://localhost:3000.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+## Estrutura do Projeto
 
-To learn more about Next.js, take a look at the following resources:
+    /pages: Contém as páginas do aplicativo.
+    /components: Componentes reutilizáveis da interface do usuário.
+    /lib: Funções auxiliares para integração com APIs externas (AWS, MongoDB, Stripe).
+    /styles: Arquivos CSS e Tailwind para estilização.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Contribuição
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Contribuições são bem-vindas! Se você quiser sugerir melhorias ou encontrar bugs, sinta-se à vontade para abrir um issue ou enviar um pull request.
